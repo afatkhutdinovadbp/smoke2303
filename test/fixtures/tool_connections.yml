@@ -1,0 +1,23 @@
+claude_code:
+  id: 48120e78-4628-4d04-83fb-8998cdc404b9
+  tool_name: claude_code
+  connection_state: active
+  external_user_id:
+  external_username:
+  external_email:
+  token_expires_at:
+  organization_membership_id: accbfcf6-c928-43f7-8456-ce6e6ebaa0ab
+  scope: persona
+  last_used_at: 2026-06-10 12:53:24 UTC
+
+cursor:
+  id: 436ddb80-e340-4c9b-9c69-fe9b14a0609f
+  tool_name: cursor
+  connection_state: active
+  external_user_id:
+  external_username:
+  external_email:
+  token_expires_at:
+  organization_membership_id: accbfcf6-c928-43f7-8456-ce6e6ebaa0ab
+  scope: persona
+  last_used_at: 2026-06-10 00:00:00 UTC
