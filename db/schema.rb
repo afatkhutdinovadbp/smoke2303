@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_06_035813) do
+ActiveRecord::Schema[7.0].define(version: 2026_06_10_120001) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.string "slug"
@@ -52,11 +52,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_035813) do
     t.index ["following_id"], name: "index_followers_on_following_id"
   end
 
+  create_table "organization_memberships", id: :string, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_organization_memberships_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "tool_connections", id: :string, force: :cascade do |t|
+    t.string "tool_name", null: false
+    t.string "connection_state", default: "active", null: false
+    t.string "external_user_id"
+    t.string "external_username"
+    t.string "external_email"
+    t.datetime "token_expires_at"
+    t.string "organization_membership_id", null: false
+    t.string "scope", default: "persona", null: false
+    t.datetime "last_used_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_membership_id", "tool_name"], name: "index_tool_connections_on_membership_and_tool", unique: true
+    t.index ["organization_membership_id"], name: "index_tool_connections_on_organization_membership_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,4 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_035813) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
+  add_foreign_key "organization_memberships", "users"
+  add_foreign_key "tool_connections", "organization_memberships"
 end

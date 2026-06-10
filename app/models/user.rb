@@ -21,6 +21,8 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :organization_memberships, dependent: :destroy
+  has_many :tool_connections, through: :organization_memberships
 
   def does_follow_another_user(user)
     following.include?(user)

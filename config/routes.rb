@@ -23,5 +23,7 @@ Rails.application.routes.draw do
     end
 
     resources :tags, only: :index
+
+    resources :tool_connections, only: :index
   end
 end
