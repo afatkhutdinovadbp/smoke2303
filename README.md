@@ -1,10 +1,5 @@
 ### Ruby On Rails implementation of RealWorld app
-DB90 PR correlation test
-
-DB90 PR correlation test
-DB90 PR correlation test
-DB90 PR correlation test
-DB90 PR correlation test
+UPDATED 3 
 
 
 This Rails app is part of the [RealWorld](https://github.com/gothinkster/realworld) project.
