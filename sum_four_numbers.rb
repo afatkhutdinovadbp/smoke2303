@@ -5,6 +5,10 @@
 
 def sum_four(a, b, c, d)
   a + b + c + d
+  puts "a: #{a}, b: #{b}, c: #{c}, d: #{d}"
+  puts "a + b + c + d: #{a + b + c + d}"
+  puts "--------------------------------"
+  return a + b + c + d
 end
 
 numbers =
