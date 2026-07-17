@@ -8,6 +8,8 @@ class Student:
     name: str
     age: int
     email: str
+    faculty: str
+    gender: str
 
 
 class StudentCRUD:
@@ -15,8 +17,22 @@ class StudentCRUD:
         self._students: dict[int, Student] = {}
         self._next_id = 1
 
-    def create(self, name: str, age: int, email: str) -> Student:
-        student = Student(id=self._next_id, name=name, age=age, email=email)
+    def create(
+        self,
+        name: str,
+        age: int,
+        email: str,
+        faculty: str,
+        gender: str,
+    ) -> Student:
+        student = Student(
+            id=self._next_id,
+            name=name,
+            age=age,
+            email=email,
+            faculty=faculty,
+            gender=gender,
+        )
         self._students[student.id] = student
         self._next_id += 1
         return student
@@ -33,6 +49,8 @@ class StudentCRUD:
         name: Optional[str] = None,
         age: Optional[int] = None,
         email: Optional[str] = None,
+        faculty: Optional[str] = None,
+        gender: Optional[str] = None,
     ) -> Optional[Student]:
         student = self._students.get(student_id)
         if student is None:
@@ -43,6 +61,10 @@ class StudentCRUD:
             student.age = age
         if email is not None:
             student.email = email
+        if faculty is not None:
+            student.faculty = faculty
+        if gender is not None:
+            student.gender = gender
         return student
 
     def delete(self, student_id: int) -> bool:
@@ -52,14 +74,19 @@ class StudentCRUD:
 if __name__ == "__main__":
     crud = StudentCRUD()
 
-    alice = crud.create("Alice", 20, "alice@example.com")
-    bob = crud.create("Bob", 22, "bob@example.com")
+    alice = crud.create("Alice", 20, "alice@example.com", "CS", "female")
+    bob = crud.create("Bob", 22, "bob@example.com", "Math", "male")
     print("Created:", asdict(alice), asdict(bob))
 
     print("Read:", asdict(crud.read(alice.id)))
     print("All:", [asdict(s) for s in crud.read_all()])
 
-    updated = crud.update(alice.id, age=21, email="alice.new@example.com")
+    updated = crud.update(
+        alice.id,
+        age=21,
+        email="alice.new@example.com",
+        faculty="AI",
+    )
     print("Updated:", asdict(updated))
 
     print("Deleted Bob:", crud.delete(bob.id))
