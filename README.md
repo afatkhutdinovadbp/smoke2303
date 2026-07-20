@@ -1,5 +1,7 @@
 ### Ruby On Rails implementation of RealWorld app
 
+This is a test project for internal Dualboot projects.
+
 This Rails app is part of the [RealWorld](https://github.com/gothinkster/realworld) project.
 
 You might also check [Laravel version](https://github.com/alexeymezenin/laravel-realworld-example-app) of this app.
